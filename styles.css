@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+
+#bigpurple-ai-writer-link .ab-icon:before {
+    content: "\f125";
+    top: 4px;
+}
+
+#bigpurple-ai-writer-modal {
+    font-family: 'IBM Plex Sans', 'inter', sans-serif;
+    overflow: hidden;
+    position: fixed;
+    width: 500px;
+    top: 400px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#bigpurple-ai-writer-messages {
+    background: #F0F0F1;
+    padding: 20px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 10px;
+    position: relative;
+}
+
+#bigpurple-ai-writer-messages .bigpurple-ai-writer-message,
+#bigpurple-ai-writer-messages .bigpurple-ai-writer-response {
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bigpurple-ai-writer-message {
+    color: #fff;
+    background: #445563;
+    margin-left: auto;
+}
+
+.bigpurple-ai-writer-response {
+    margin-right: auto;
+    background: #fff;
+    border: 1px solid #E0E4F0;
+}
+
+.bigpurple-ai-writer-copy-button {
+    background: #d6d6d6;
+    font-size: 10px;
+    border-radius: 6px;
+    border: 0;
+    padding: 4px;
+    margin-top: 8px;
+    color: #454545;
+    cursor: pointer;
+}
+
+#bigpurple-ai-writer-action {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+}
+
+#bigpurple-ai-writer-input {
+    padding: 5px 10px;
+    font-size: 13px;
+    border: 1px solid #CCCCCC;
+    background-color: #F4F4F4;
+    flex-grow: 1;
+    transition: background-color 100ms ease-in-out;
+}
+
+#bigpurple-ai-writer-input:focus {
+    background-color: #fff;
+}
+
+#bigpurple-ai-writer-send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3878C3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 40px;
+    padding: 0 10px;
+    transition: all 200ms ease-in-out;
+}
+
+#bigpurple-ai-writer-send svg {
+    transition: all 200ms ease-in-out;
+}
+
+#bigpurple-ai-writer-send:hover {
+    background-color: #4188DA;
+}
+
+#bigpurple-ai-writer-send:hover svg {
+    transform: rotate(45deg);
+}
+
+#bigpurple-ai-writer-intro {
+    z-index: 9999999;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    background: #E1E1E1;
+    flex-direction: column;
+    gap: 20px;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+#bigpurple-ai-writer-intro p {
+    width: 60%;
+    text-align: center;
+}
+
+
+#bigpurple-ai-writer-loading {
+    clear: both;
+    order: 1;
+    padding: 10px 0;
+}
+
+.bigpurple-ai-writer-loader {
+    display: inline-block;
+    position: relative;
+}
+
+.bigpurple-ai-writer-loader div {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .4);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.bigpurple-ai-writer-loader div:nth-child(1) {
+    left: 4px;
+    animation: bigpurple-ai-writer-ellipsis1 0.6s infinite;
+}
+
+.bigpurple-ai-writer-loader div:nth-child(2) {
+    left: 4px;
+    animation: bigpurple-ai-writer-ellipsis2 0.6s infinite;
+}
+
+.bigpurple-ai-writer-loader div:nth-child(3) {
+    left: 16px;
+    animation: bigpurple-ai-writer-ellipsis2 0.6s infinite;
+}
+
+.bigpurple-ai-writer-loader div:nth-child(4) {
+    left: 28px;
+    animation: bigpurple-ai-writer-ellipsis3 0.6s infinite;
+}
+
+@keyframes bigpurple-ai-writer-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bigpurple-ai-writer-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes bigpurple-ai-writer-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(12px, 0);
+    }
+}
+
+
+#bigpurple-ai-writer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    /* make sure this is below the modal's z-index */
+}
+
+#bigpurple-ai-writer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: #1E2327;
+}
+
+#bigpurple-ai-writer-header h1 {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 400;
+}
+
+#bigpurple-ai-writer-header span {
+    font-size: 10px;
+    margin-left: 8px;
+    background: rgba(255, 255, 255, .2);
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+
+
+#bigpurple-ai-writer-close {
+    cursor: pointer;
+    background: rgba(255, 255, 255, .05);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: all 200ms ease-in-out;
+}
+
+#bigpurple-ai-writer-close:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, .1);
+}
